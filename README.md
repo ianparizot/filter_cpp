@@ -7,6 +7,7 @@ To use it, you must this following command:
 ````bash
 filter -(b, g, e or r) path/to/your/input.bmp [path/to/your/output.bmp]
 ````
+The `-b` is to blur the image, the`-g`is to grayscale it, the `-e` is to show the egdes of the image, and lastly `-r` reflects the image.
 You don't have to put the output file, if no name was provided, it will automatically create output.bmp in the folder in which you executed filter.
 ## Aknowledgements
 See [bmp.h](src/bmp.h).
