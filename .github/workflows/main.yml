@@ -11,10 +11,9 @@ jobs:
     - name: Set up CMake
       uses: jwlawson/actions-setup-cmake@v1
       with:
-        cmake-version: '3.21.1'
+        cmake-version: '3.31'
     - name: Build
       run: |
-        brew install cmake
         mkdir build-macos
         cd build
         cmake ..
