@@ -1,0 +1,33 @@
+name: Build for Windows with MinGW
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install MinGW
+      run: |
+        choco install mingw --version=8.1.0 
+        refreshenv 
+
+    - name: Set up CMake
+      uses: jwlawson/actions-setup-cmake@v1
+      with:
+        cmake-version: '3.31'
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake .. -G "MinGW Makefiles"
+        mingw32-make
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts
+        path: build/
