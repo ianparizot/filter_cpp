@@ -1,0 +1,25 @@
+name: Build for Linux
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make  
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: build/ 
