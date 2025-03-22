@@ -18,3 +18,8 @@ jobs:
         cd build-macos
         cmake ..
         make
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts
+        path: build-macos
