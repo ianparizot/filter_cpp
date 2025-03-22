@@ -12,6 +12,7 @@ jobs:
     - name: Install MinGW
       run: |
         choco install mingw --version=8.1.0 
+        Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
         refreshenv 
 
     - name: Set up CMake
