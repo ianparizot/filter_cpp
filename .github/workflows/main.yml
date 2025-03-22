@@ -15,6 +15,6 @@ jobs:
     - name: Build
       run: |
         mkdir build-macos
-        cd build
+        cd build-macos
         cmake ..
         make
