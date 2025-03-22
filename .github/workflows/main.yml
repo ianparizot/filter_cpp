@@ -1,0 +1,21 @@
+name: Build for macOS
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up CMake
+      uses: jwlawson/actions-setup-cmake@v1
+      with:
+        cmake-version: '3.21.1'
+    - name: Build
+      run: |
+        brew install cmake
+        mkdir build-macos
+        cd build
+        cmake ..
+        make
