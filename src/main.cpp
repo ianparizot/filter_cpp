@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cstring>
 
 #include "functions.h"
 
@@ -11,7 +12,7 @@ int main(int argc, char** argv) {
     ofstream output;
     string filters("bger");
     // Check for correct number of arguments
-    if (argc != 3 and argc != 4) {
+    if (argc != 3 and argc != 4 and argc != 2) {
         cerr << "Usage: filter -(b, g, e and r) inputfile.bmp [outputfile.bmp]" << endl;
         exit(EXIT_FAILURE);
     }
@@ -20,6 +21,11 @@ int main(int argc, char** argv) {
     if (not filter[0] == '-') {
         cerr << "Error 0: Invalid filter" << endl;
         exit(EXIT_FAILURE);
+    }
+    if (filter[1] == 'v' or filter == "--version") {
+        cout << "filter 1.0.1" << endl << "Copyright (c) 2025 Ian Parizot" << endl << "https://github.com/ianparizot/" <<
+        "MIT License" << endl;
+        exit(EXIT_SUCCESS);
     }
     if (filter.length() < 2 or filters.find(filter[1]) == string::npos) {
         cerr << "ERROR 1: Invalid filter" << endl;
